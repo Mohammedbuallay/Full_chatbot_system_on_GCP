@@ -1,8 +1,6 @@
 from google.cloud import texttospeech
 import os, dialogflow
 from playsound import playsound
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]= 'modx-7c366-a60fb8dbc5ea.json'
-
 client_stt = texttospeech.TextToSpeechClient()
 voice = texttospeech.VoiceSelectionParams(
         language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.NEUTRAL
@@ -33,4 +31,3 @@ def send_to_dialogflow(text_to_be_analyzed):
     response = session_client.detect_intent(session=session, query_input=query_input)
     return response.query_result.fulfillment_text
 
-#text_to_speech('hello mohammed how are you')

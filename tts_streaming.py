@@ -2,10 +2,12 @@ import re,os
 import sys
 import time
 
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]= sys.argv[1]
+
 from google.cloud import speech
 import pyaudio
 from six.moves import queue
-from tts import send_to_dialogflow, text_to_speech
+from utils import send_to_dialogflow, text_to_speech
 # Audio recording parameters
 STREAMING_LIMIT = 240000  # 4 minutes
 SAMPLE_RATE = 16000
@@ -14,8 +16,6 @@ CHUNK_SIZE = int(SAMPLE_RATE / 10)  # 100ms
 RED = '\033[0;31m'
 GREEN = '\033[0;32m'
 YELLOW = '\033[0;33m'
-
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]= 'modx-7c366-a60fb8dbc5ea.json'
 
 def get_current_time():
     """Return Current Time in MS."""
